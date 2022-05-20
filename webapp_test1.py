@@ -10,7 +10,7 @@ import plotly.graph_objs as go
 from plotly.offline import download_plotlyjs,init_notebook_mode,plot,iplot
 import plotly.express as px
 
-df= pd.read_csv('C:\\Users\\hp\Desktop\\stremlitut\\crime1.csv')
+df= pd.read_csv('crime1')
 st.markdown("<h1 style='text-align:left; color:red;'><u><b>Gender Discrimination and Inequality analysis</b></u></h1>",unsafe_allow_html=True)
 #st.title("Gender Discrimination and Inequality analysis")
 st.sidebar.title("FIELDS")
@@ -19,7 +19,7 @@ if select1!="Crime":
     st.sidebar.title("Visualisation")
     select2=st.sidebar.selectbox('Domains',options=['Choose the type of visualisation you want to see','Bar style','Line style','Scatter style'])
 else:
-    data_url=('C:\\Users\\hp\Desktop\\stremlitut\\crime_processed_data.csv')
+    data_url=('crime_processed_data.csv')
     data=pd.read_csv(data_url)
     st.sidebar.title("Visualisation")
     select3=st.sidebar.selectbox('Domains',options=['Choose the type of visualisation you want to see','Bar style','Map style'])
@@ -30,7 +30,7 @@ else:
 class education:
     @staticmethod
     def literacy_rate(vis):
-        data= pd.read_csv('C:\\Users\\hp\Desktop\\stremlitut\\literacy rate 15 years and above.csv')
+        data= pd.read_csv('literacy rate 15 years and above.csv')
         df = data.loc[data['Country Name'] =='India']
         df.dropna(axis=1,inplace=True)
         dat = df.iloc[0, 4:]
@@ -49,7 +49,7 @@ class education:
 
     @staticmethod
     def high_schooledu(vis):
-        data= pd.read_csv('C:\\Users\\hp\Desktop\\stremlitut\\Progression to high school female.csv')
+        data= pd.read_csv('Progression to high school female.csv')
         df = data.loc[data['Country '] =='India']
         df.dropna(axis=1,inplace=True)
         dat = df.iloc[0, 4:]
@@ -67,7 +67,7 @@ class education:
             st.plotly_chart(fig3)
     @staticmethod
     def primary_edu(vis):
-        data= pd.read_csv('C:\\Users\\hp\Desktop\\stremlitut\\Primary education female.csv')
+        data= pd.read_csv('Primary education female.csv')
         df = data.loc[data['Country Name'] == 'India']
         df.dropna(axis=1,inplace=True)
         dat = df.iloc[0, 4:]
@@ -85,7 +85,7 @@ class education:
             st.plotly_chart(fig3)
     @staticmethod
     def GPI_primary(vis):
-        data= pd.read_csv('C:\\Users\\hp\Desktop\\stremlitut\\Parity Index (primary).csv')
+        data= pd.read_csv('Parity Index (primary).csv')
         main=data[data["Country Name"]=="India"]
         main.dropna(axis=1,inplace=True)
         main.drop(["Indicator Code"],axis=1)
@@ -105,7 +105,7 @@ class education:
             st.plotly_chart(fig1)
     @staticmethod
     def GPI_secondary(vis):
-        data= pd.read_csv('C:\\Users\\hp\Desktop\\stremlitut\\Final year project\\Gender Parity Index(primary and secondary).csv')
+        data= pd.read_csv('Gender Parity Index(primary and secondary).csv')
         main=data[data["Country Name"]=="India"]
         main.dropna(axis=1,inplace=True)
         main.drop(["Indicator Code"],axis=1)
@@ -127,8 +127,8 @@ class education:
 class Workforce:
     @staticmethod
     def wagensalaries(vis):
-        data1= pd.read_csv('C:\\Users\\hp\Desktop\\stremlitut\\Wage and salaried workers, female.csv') 
-        data2= pd.read_csv('C:\\Users\\hp\Desktop\\stremlitut\\Wage and salaried workers, male.csv') 
+        data1= pd.read_csv('Wage and salaried workers, female.csv') 
+        data2= pd.read_csv('Wage and salaried workers, male.csv') 
         main1=data1[data1["Country Name"]=="India"]
         main2=data2[data2["Country Name"]=="India"]
         main1.dropna(axis=1,inplace=True)
@@ -219,7 +219,7 @@ class crime:
                     return data.iloc[[i]].reset_index()
     @staticmethod               
     def Crime_map():
-        data= pd.read_csv('C:\\Users\\hp\Desktop\\stremlitut\\crime1.csv')
+        data= pd.read_csv('crime1.csv')
         st.sidebar.title("Choose the state")
         select=st.sidebar.selectbox('State',options=df["STATE/UT"])
         obj=crime.search_group(select,data)
